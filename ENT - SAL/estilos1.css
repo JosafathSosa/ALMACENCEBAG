@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #c0c0c0;
+  font-family: "Open sans";
+}
+
+.wrap {
+  width: 837px;
+  max-width: 90%;
+  margin: 30px auto;
+}
+
+ul.tabs {
+  width: 100%;
+  background: rgb(0, 100, 0);
+  list-style: none;
+  display: flex;
+}
+
+ul.tabs li {
+  width: 40%; /*tamano de la linea de arriba de entrada y salidas*/
+}
+
+ul.tabs li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+
+  display: block;
+  padding: 20px 0px;
+}
+
+.active {
+  background: #003300;
+}
+
+ul.tabs li a .tab-text {
+  margin-left: 8px;
+}
+
+.secciones {
+  width: 100%;
+  background: #fff;
+}
+
+.secciones article {
+  padding: 50px;
+}
+
+.secciones article p {
+  text-align: justify;
+}
+
+@media screen and (max-width: 700px) {
+  ul.tabs li {
+    width: none;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  ul.tabs li a {
+    padding: 15px 0px;
+  }
+
+  ul.tabs li a .tab-text {
+    display: none;
+  }
+
+  .secciones article {
+    padding: 30px;
+  }
+}
+
+.titulo {
+  position: absolute;
+
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 550px;
+  top: 100px;
+  background: #abebc6;
+}
+
+.subtitulo {
+  position: absolute;
+
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 400px;
+  top: 130px;
+  background: #f6ddcc;
+}
+
+.letra {
+  position: absolute;
+
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 470px;
+  top: 130px;
+}
+
+.form1 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 700;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form2 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 400;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form3 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 700;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form4 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 300;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form5 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form6 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form1 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form2 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form3 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form4 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form5 {
+  position: absolute;
+  width: -10;
+  height: -150px;
+  float: left;
+
+  right: 900;
+  top: 330;
+  background: #e5e7e9;
+}
+
+.form6 {
+  position: absolute;
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 340px;
+  top: 300px;
+  background: #e5e7e9;
+}
+
+.form7 {
+  position: absolute;
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 400px;
+  top: 330px;
+  background: #e5e7e9;
+}
+.form8 {
+  position: absolute;
+  width: -10%;
+  height: -150px;
+  float: left;
+
+  right: 700px;
+  top: 330px;
+  background: #e5e7e9;
+}

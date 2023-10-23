@@ -1,0 +1,252 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(fondo.jpg);
+  background-size: cover;
+  background-position: center;
+
+  font-family: sans-serif;
+}
+.menu-cebag {
+  background: rgb(0, 100, 0);
+  text-align: center;
+}
+.menu-cebag ul {
+  display: inline-flex;
+  list-style: none;
+  color: #fff;
+}
+.menu-cebag ul li {
+  white-space: 120px;
+  margin: 15px;
+  padding: 15px;
+}
+.menu-cebag ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.active,
+.menu-cebag ul li:hover {
+  background: #2bab0d;
+  border-radius: 3px;
+}
+.menu-cebag .fa {
+  margin-right: 15px;
+}
+.sub-menu-1 {
+  display: none;
+}
+
+article#tab2 {
+  position: relative;
+}
+
+.menu-cebag ul li:hover .sub-menu-1 {
+  display: block;
+  position: absolute;
+  background: rgb(0, 100, 0);
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.menu-cebag ul li:hover .sub-menu-1 ul {
+  display: block;
+  margin: 10px;
+}
+.menu-cebag li ul li:hover .sub-menu-1 {
+  display: block;
+  position: relative;
+  background: rgb(0, 100, 0);
+  margin-top: 15px;
+  margin-left: 15px;
+  min-width: 200px;
+}
+******************************* .menu-cebag ul li:hover .sub-menu-1 ul li {
+  width: 150px;
+  padding: 10px;
+  border-bottom: 1px dotted #fff;
+  background: transparent;
+  border-radius: 0;
+  text-align: left;
+}
+.menu-cebag ul li:hover .sub-menu-1 ul li:last-child {
+  border-bottom: none;
+}
+.menu-cebag ul li:hover .sub-menu-1 ul li a:hover {
+  color: #222222;
+}
+*****************************************
+
+
+
+
+///////////////////////
+
+
+/***********************
+ * Essential Structure *
+ ***********************/
+.flexsearch--wrapper {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  overflow: hidden;
+  background: transparent;
+  margin: 0;
+  position: static;
+}
+
+.flexsearch--form {
+  overflow: hidden;
+  position: relative;
+}
+
+.flexsearch--input-wrapper {
+  padding: 0 66px 0 0; /* Right padding for submit button width */
+  overflow: hidden;
+}
+
+.flexsearch--input {
+  width: 100%;
+}
+
+/***********************
+ * Configurable Styles *
+ ***********************/
+.flexsearch {
+  padding: 0 1000px 0 50px; /* Padding for other horizontal elements */
+}
+
+.flexsearch--input {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 20px;
+  padding: 0 30px 0 10px; /*/largo del buscador
+  border-color: #888;
+  border-radius: 35px; /* (height/2) + border-width */ /////////////////////
+  border-style: solid;
+  border-width: 5px;
+  margin-top: -5px; /*moficar ubicacion del buscador*/
+  color: #333;
+  font-family: "Helvetica", sans-serif;
+  font-size: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.flexsearch--submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 80px; /*izquiera derecha,flecha*/
+  height: 60px;
+  padding: 0;
+  border: none;
+  margin-top: -20px; /* altura de buscador */ ////////////////////////
+  margin-right: 5px; /* border-width */
+  background: transparent;
+  color: #888;
+  font-family: "Helvetica", sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.flexsearch--input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.flexsearch--input:focus.flexsearch--submit {
+  color: #333;
+}
+
+.flexsearch--submit:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+input:-moz-placeholder {
+  color: #888;
+}
+
+////////////////////////////////////////
+
+.active,
+#botones ul li a:hover {
+  background: #2bab0d;
+  border-radius: -10px;
+}
+
+.botones {
+  margin-left: 25%;
+  margin-right: 36%;
+  padding: 10px;
+  border: black 2px solid;
+}
+
+.active,
+#botones1 ul li a:hover {
+  background: #2bab0d;
+  border-radius: -10px;
+}
+
+.botones1 {
+  margin-left: 25%;
+  margin-right: 36%;
+  padding: 10px;
+  border: black 2px solid;
+}
+.active,
+#botones1 ul li a:hover {
+  background: #2bab0d;
+  border-radius: -10px;
+}
+
+/*almacen y administracion posicionados a la misma altura*/
+.content {
+  width: 100%;
+}
+
+.cebag {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: #2bab0d;
+  width: 97%;
+}
+
+.left {
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-left: 57px;
+  float: left;
+  position: relative;
+  width: 45%;
+  border: forestgreen solid 5px;
+  height: auto;
+}
+
+.right {
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+  position: relative;
+  float: left;
+  width: 45%;
+  border: forestgreen solid 5px;
+  height: auto;
+}
+
+/*nuevo cliente*/
+
+/* AGREGAR */
