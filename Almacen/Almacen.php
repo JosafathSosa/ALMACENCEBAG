@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -6,103 +7,60 @@
     <title>MENU ALMACEN</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
-
+    <link rel="stylesheet" href="font-awesome.css">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
-
-    <div class="menu-cebag">
-        <ul>
-
-            <li><a href="#"><i class="fa fa-home"></i>INICIO</a></li>
-
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
+            </div>
+        </div>
+    </nav>
 
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
+    <div class="buttonContainer">
+        <!-- Aquí puedes agregar contenido para verificar que el div esté mostrando el fondo -->
+        <div class="buttons">
 
-                    </ul>
-                </div>
-            </li>
-            <li>
-
-            </li>
-
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <br>
-    <center>
-        <div class="cebag">ALMACEN</div>
-        <div class="botones-container">
-            <div class="botones-arriba">
-
-                <br>
-                <a href="../ENT - SAL/entrada-salida.php">
-                    <button><img src="img/entrada.jpg" height="95"
-                            width="160" /><br><big><b>ENTRADAS</b></big><br><i>Hacer
-                            el
-                            reporte de </i><br><i>entrada de cualquiera</i><br><i> de los productos</i><br><i>
-                            ofertados</i></br></button>
-                </a>
-                <a href="../PROV-PROD-TOT/ppt.php">
-                    <button><img src="img/proveedores.jpg" height="95"
-                            width="160" /><br><big><b>PROVEEDORES</b></big><br><i>Ver
-                            los
-                            proveedores </i><br><i>de cada entrada</i><br><i>y salida de los</i><br><i>
-                            producto</i></br></button>
-                </a>
-                <a href="../PROV-PROD-TOT/ppt.php">
-                    <button><img src="img/productos.jpg" height="95"
-                            width="160" /><br><big><b>PRODUCTOS</b></big><br><i>Ver
-                            los
-                            productos </i><br><i>de cada entrada</i><br><i>y salida de los</i><br><i>
-                            producto</i></br></button>
+            <div class="buttonProductoProveedor">
+                <i class="fa-solid fa-shop fa-5x icon"></i>
+                <a href="../agregar/Agregar.php">
+                    <p class="text-entrada">AGREGAR PRODUCTO O PROVEEDOR</p>
                 </a>
             </div>
-
-
-            <br>
-            <a href="../ENT - SAL/entrada-salida.php">
-                <button><img src="img/salida.jpg" height="95" width="160" /><br><big><b>SALIDAS</b></big><br><i>Hacer el
-                        reporte
-                        de </i><br><i>salida de cualquiera</i><br><i> de los productos</i><br><i>
-                        ofertados</i></br></button>
-            </a>
-
-
-            <a href="../registros/Registros.php">
-                <button><img src="img/reportes.jpg" height="95" width="160" /><br><big><b>TOTALES</b></big><br><i>Ver
-                        los
-                        totales </i><br><i>de cada entrada</i><br><i>y salida de los</i><br><i>
-                        producto</i></br></button>
-            </a>
-
-
+            <div class="buttonEntrada">
+                <i class="fa-solid fa-right-to-bracket fa-5x icon"></i>
+                <a href="../ENT - SAL/entrada-salida.php">
+                    <p class="text-entrada">REGISTRAR ENTRADA O SALIDA DE PRODUCTOS</p>
+                </a>
+            </div>
+            <div class="buttonTotal">
+                <i class="fa-solid fa-chart-simple fa-5x icon"></i>
+                <a href="../PROV-PROD-TOT/ppt.php">
+                    <p class="text-entrada">PRODUCTOS, PROVEEDORES Y TOTALES</p>
+                </a>
+            </div>
+            <div class="buttonRegistros">
+                <i class="fa-solid fa-calendar-days fa-5x icon"></i>
+                <a href="../registros/Registros.php">
+                    <p class="text-entrada">REGISTROS DE ENTRADAS Y SALIDAS</p>
+                </a>
+            </div>
         </div>
-    </center>
-
     </div>
 </body>
 

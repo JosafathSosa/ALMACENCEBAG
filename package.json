@@ -1,0 +1,15 @@
+{
+  "name": "http://localhost/ALMACENCEBAG/",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch sass/estilos.scss:css/estilos.css",
+    "serve": "browser-sync start --proxy 'localhost/tu-proyecto' --files 'css/*.css, *.php'",
+    "start": "npm-run-all --parallel sass serve"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "sass": "^1.77.2"
+  }
+}

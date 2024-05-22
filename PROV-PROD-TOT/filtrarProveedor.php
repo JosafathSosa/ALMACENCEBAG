@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-include("conexion.php");
+include "conexion.php";
 
 $Proveedor = $mysqli->real_escape_string($_POST['proveedor']);
 
@@ -20,10 +20,13 @@ $resultado = $mysqli->query($query);
 
     <title>ENTRADAS/SALIDAS</title>
     <link rel="stylesheet" href="estilos1.css">
-    <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="font-awesome.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
 
@@ -31,53 +34,24 @@ $resultado = $mysqli->query($query);
 
 <body>
 
-    <div class="menu-cebag">
-        <ul>
-
-            <li><a href="../Almacen/Almacen.php"><i class="fa fa-home"></i>INICIO</a></li>
-
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Almacen/Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
-
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="">
-                    <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
-                        <input class="form-control me-2" type="text" name="busqueda" id="busqueda" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </li>
-
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
+                <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2" type="text" name="busqueda" id="busqueda"
+                        placeholder="Busca productos" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <div class="wrap">
 
         <ul class="tabs">
@@ -121,7 +95,7 @@ $resultado = $mysqli->query($query);
 
                                 </tr>
                             </thead>
-                            <tbody><?php while ($row = $resultado->fetch_assoc()) { ?>
+                            <tbody><?php while ($row = $resultado->fetch_assoc()) {?>
                                 <tr class="text-center">
                                     <td width="140" align="center">
                                         <?php echo $row['id_producto']; ?></td>
@@ -141,7 +115,7 @@ $resultado = $mysqli->query($query);
                                         </form>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                     </fieldset>

@@ -3,7 +3,6 @@
 <?php
 require "conexion.php";
 $proveedor = $mysqli->real_escape_string($_POST['proveedor']);
-
 ?>
 
 <!DOCTYPE html>
@@ -17,136 +16,89 @@ $proveedor = $mysqli->real_escape_string($_POST['proveedor']);
     <link rel="stylesheet" href="estilos1.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="font-awesome.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
     <script src="main.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="menu-cebag">
-        <ul>
 
-            <li><a href="../Almacen/Almacen.php"><i class="fa fa-home"></i>INICIO</a></li>
-
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Almacen/Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
-
-                    </ul>
-                </div>
-            </li>
-            <li>
-
-            </li>
-
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="wrap">
-
         <ul class="tabs">
             <li><a href="#tab2"><span class="fa fa-plus-square"></span><span class="tab-text">ENTRADAS</span></a></li>
         </ul>
 
         <div class="secciones">
-            <center>
-                <article class="tab2">
-                    <div class="">
-                        <h1>AGREGAR ENTRADA DE PRODUCTOS</h1>
+            <article id="tab2">
+                <div>
+                    <h1>Agrega entrada de productos</h1>
+                </div>
+                <div>
+                    <p>Para registrar una entrada de producto llena el siguiente formulario</p>
+                </div>
+                <form action="guardar_entrada.php" method="POST" autocomplete="off">
+                    <div>
+                        <label for="recibe">Recibe:</label>
+                        <input id="recibe" name="recibe" type="text" placeholder="Quien recibe" required>
                     </div>
-                    <div class="">
-                        <legend>Para registrar una entrada de producto llena el siguiente formulario</legend>
+                    <div>
+                        <label for="entrega">Entrega:</label>
+                        <input id="entrega" name="entrega" type="text" placeholder="Quien entrega" required>
                     </div>
-                    <form action="guardar_entrada.php" method="POST" class="container_form">
-                        <div class="">
-                            <i> <b>
-                                    <p style="color:black;"><big>RECIBE:</big>
-                                </b></i>
-                            <input name="recibe" type="text" placeholder="Quien recibe" required></b>
-                            </d>
-                        </div>
-                        <div class="">
-                            <i> <b>
-                                    <p style="color:black;"><big>ENTREGA:</big>
-                                </b></i>
-                            <input name="entrega" type="text" placeholder="Quien entrega" required></b>
-                            </d>
-                        </div>
-                        <div class="">
-                            <i> <b>
-                                    <p style="color:black;"><big>CANTIDAD:</big>
-                                </b> </i>
-                            <input name="cantidad" type="text" placeholder="#" required></b>
-                        </div>
-                        <div class="">
-                            <i> <b>
-                                    <p style="color:black;"><big>PROVEEDOR:</big>
-                                </b> </i>
-                            <input type="text" name="proveedor" value="<?php echo $proveedor; ?>">
-                        </div>
-                        <div class="">
-                            <?php
-
+                    <div>
+                        <label for="cantidad">Cantidad:</label>
+                        <input id="cantidad" name="cantidad" type="number" placeholder="Cantidad" required>
+                    </div>
+                    <div>
+                        <label for="proveedor">Proveedor:</label>
+                        <input id="proveedor" type="text" name="proveedor" value="<?php echo $proveedor; ?>">
+                    </div>
+                    <div>
+                        <?php
 $consultaProducto = "SELECT `producto`.`nombre_producto` FROM `producto` LEFT JOIN `proveedor` ON `producto`.`id_proveedor` = `proveedor`.`id_proveedor` WHERE nombre = '$proveedor'";
 $res = $mysqli->query($consultaProducto);
 ?>
-                            <i><b>
-                                    <p style="color: black;"><big>PRODUCTO</big>
-                                </b></i>
-                            <select class="" name="producto" required>
-                                <option selected> Seleccione el producto:</option>
-                                <?php while ($fila = $res->fetch_assoc()) {?>
-                                <option><?php echo $fila['nombre_producto']; ?></option>
-                                </tr>
-                                <?php }?>
-                            </select>
-                        </div>
-                        <div class="">
-                            <i> <b>
-                                    <p style="color:black;"><big>FECHA ENTRADA:</big>
-                                </b></i>
-                            <input name="fecha" type="date" class="container__input" min="2010-12-31" max="2025-12-31"
-                                step="1" required />
-                        </div>
-                        <br>
-                        <div class="">
-                            <div class="bot">
-                                <a class="btn btn-danger" href="entrada-salida.php">Atras</a>
-                                <input class="btn btn-success" type="submit" value="Guardar">
-
-                            </div>
-                    </form>
-                </article>
-            </center>
+                        <label for="producto">Producto:</label>
+                        <select id="producto" name="producto" required>
+                            <option selected>Seleccione el producto:</option>
+                            <?php while ($fila = $res->fetch_assoc()) {?>
+                            <option><?php echo $fila['nombre_producto']; ?></option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="fecha">Fecha Entrada:</label>
+                        <input id="fecha" name="fecha" type="date" min="2010-12-31" max="2025-12-31" step="1"
+                            required />
+                    </div>
+                    <br>
+                    <div class="bot">
+                        <button type="button" class="btn btn-danger"
+                            onclick="window.location.href='entrada-salida.php'">Atras</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </article>
         </div>
     </div>
 </body>

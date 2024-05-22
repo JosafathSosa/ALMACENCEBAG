@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-include("conexion.php");
+include "conexion.php";
 $query = "SELECT `producto`.`id_producto`,`producto`.`nombre_producto`, `producto`.`descripcion`,`proveedor`.`nombre`,`producto`.`existencias`,`producto`.`fecha` FROM `producto` LEFT JOIN `proveedor` ON `producto`.`id_proveedor` = `proveedor`.`id_proveedor` order by `proveedor`.`nombre`, `producto`.`nombre_producto`";
 $resultado = $mysqli->query($query);
 
@@ -15,8 +15,8 @@ $cons = "SELECT nombre FROM proveedor";
 $res3 = $mysqli->query($cons);
 
 /*$sql = "SELECT `totales`.`producto`,`totales`.`cantidad_inicio`, `totales`.`cantidad_salida`,`totales`.`existencia`,`totales`.`totales`,`entrada`.`fecha`, `proveedor`.`nombre`
-                FROM `entrada` 
-                    LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor`";
+FROM `entrada`
+LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor`";
 $resultado = mysqli_query($mysqli, $sql);*/
 ?>
 
@@ -30,10 +30,14 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
     <title>ENTRADAS/SALIDAS</title>
     <link rel="stylesheet" href="estilos1.css">
-    <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="font-awesome.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
     function confirmacion() {
         var res = confirm("¿Esta seguro de eliminar estos datos?");
@@ -50,79 +54,37 @@ $resultado = mysqli_query($mysqli, $sql);*/
 </head>
 
 <body>
-
-    <div class="menu-cebag">
-        <ul>
-
-            <li><a href="../Almacen/Almacen.php"><i class="fa fa-home"></i>INICIO</a></li>
-
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Almacen/Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
+                <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2" type="text" name="busqueda" id="busqueda"
+                        placeholder="Busca productos" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
 
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="">
-                    <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
-                        <input class="form-control me-2" type="text" name="busqueda" id="busqueda" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </li>
-
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
     <div class="wrap">
-
+        <div class="mensaje">
+            <h3>Total de productos, proveedores y totales</h3>
+        </div>
         <ul class="tabs">
-            <li><a href="#tab1"><span class="fa fa-bars"></span><span class="tab-text">MENU</span></a></li>
             <li><a href="#tab2"><span class="fa fa-briefcase"></span><span class="tab-text">PRODUCTOS</span></a></li>
             <li><a href="#tab3"><span class="fa fa-minus-square"></span><span class="tab-text">PROVEDORES</span></a>
             </li>
             <li><a href="#tab4"><span class="fa fa-line-chart"></span><span class="tab-text">TOTALES</span></a></li>
         </ul>
-
         <div class="secciones">
-
-            <center>
-
-                <article id="tab1">
-
-                    <h1>Seleccione productos, proveedores o totales en el menu situado en la parte de arriba dependiendo
-                        lo que quiera agregar</h1>
-
-                </article>
-
-            </center>
-            </d>
-
-
             <center>
 
                 <article id="tab2">
@@ -134,10 +96,10 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                 <label for="existencia">Por proveedor:</label>
                                 <select class="me-2" name="proveedor" required>
                                     <option selected> Seleccione el proveedor:</option>
-                                    <?php while ($row = $res3->fetch_assoc()) { ?>
+                                    <?php while ($row = $res3->fetch_assoc()) {?>
                                     <option><?php echo $row['nombre']; ?></option>
                                     </tr>
-                                    <?php } ?>
+                                    <?php }?>
                                 </select>
                                 <button class="btn btn-success">Filtrar</button>
                             </div>
@@ -161,7 +123,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
                                 </tr>
                             </thead>
-                            <tbody><?php while ($row = $resultado->fetch_assoc()) { ?>
+                            <tbody><?php while ($row = $resultado->fetch_assoc()) {?>
                                 <tr class="text-center">
                                     <td width="140" align="center">
                                         <?php echo $row['id_producto']; ?></td>
@@ -181,7 +143,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                         </form>
                                     </td>
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                     </fieldset>
@@ -214,7 +176,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($row = $res->fetch_assoc()) { ?>
+                                <?php while ($row = $res->fetch_assoc()) {?>
                                 <tr class="text-center">
                                     <td width="140" align="center">
                                         <?php echo $row['id_proveedor']; ?></td>
@@ -234,7 +196,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                     </td>
 
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                     </fieldset>
@@ -268,7 +230,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                             <tbody>
                                 <?php while ($row = $res2->fetch_assoc()) {
 
-                                ?>
+    ?>
                                 <tr class="text-center">
 
                                     <td align="center"><?php echo $row['producto']; ?></td>
@@ -276,7 +238,8 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                     <td align="center"><?php echo $row['cantidad_salida']; ?></td>
                                     <td align="center"><?php echo $row['existencia']; ?></td>
                                 </tr>
-                                <?php } ?>
+                                <?php
+}?>
                             </tbody>
                         </table>
                     </fieldset>

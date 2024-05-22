@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-include("conexion.php");
+include "conexion.php";
 $query = "SELECT * FROM producto";
 $resultado = $mysqli->query($query);
 
@@ -12,8 +12,8 @@ $query = "SELECT * FROM totales";
 $res2 = $mysqli->query($query);
 
 /*$sql = "SELECT `totales`.`producto`,`totales`.`cantidad_inicio`, `totales`.`cantidad_salida`,`totales`.`existencia`,`totales`.`totales`,`entrada`.`fecha`, `proveedor`.`nombre`
-                FROM `entrada` 
-                    LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor`";
+FROM `entrada`
+LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor`";
 $resultado = mysqli_query($mysqli, $sql);*/
 ?>
 
@@ -28,9 +28,13 @@ $resultado = mysqli_query($mysqli, $sql);*/
     <title>ENTRADAS/SALIDAS</title>
     <link rel="stylesheet" href="estilos1.css">
     <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="font-awesome.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
     function confirmacion() {
         var res = confirm("¿Esta seguro de eliminar estos datos?");
@@ -47,69 +51,42 @@ $resultado = mysqli_query($mysqli, $sql);*/
 </head>
 
 <body>
+    <?php
+$busqueda = strtolower($_REQUEST['busqueda']);
+if (empty($busqueda)) {
+    header("location: ppt.php");
+}
 
-    <div class="menu-cebag">
-        <?php
-        $busqueda = strtolower($_REQUEST['busqueda']);
-        if (empty($busqueda)) {
-            header("location: ppt.php");
-        }
+$consutlaProvee = "SELECT * FROM proveedor WHERE nombre LIKE '%$busqueda%'";
+$resProv = $mysqli->query($consutlaProvee);
 
-        $consutlaProvee = "SELECT * FROM proveedor WHERE nombre LIKE '%$busqueda%'";
-        $resProv = $mysqli->query($consutlaProvee);
+$consultaProd = "SELECT * FROM producto WHERE nombre_producto LIKE '%$busqueda%'";
+$resProd = $mysqli->query($consultaProd);
 
-        $consultaProd = "SELECT * FROM producto WHERE nombre_producto LIKE '%$busqueda%'";
-        $resProd = $mysqli->query($consultaProd);
+$consultaTotales = "SELECT * FROM totales WHERE producto LIKE '%$busqueda%'";
+$resTot = $mysqli->query($consultaTotales);
+?>
 
-        $consultaTotales = "SELECT * FROM totales WHERE producto LIKE '%$busqueda%'";
-        $resTot = $mysqli->query($consultaTotales);
-        ?>
-        <ul>
-
-            <li><a href="../Almacen/Almacen.php"><i class="fa fa-home"></i>INICIO</a></li>
-
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-truck"></i>OPERADOR</a></li>
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Almacen/Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
+                <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2" type="text" name="busqueda" id="busqueda"
+                        value="<?php echo $busqueda ?>" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
-                        <li><a href="#"><i class="fa fa-laptop"></i>IMPRESORA</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="">
-                    <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
-                        <input class="form-control me-2" type="text" name="busqueda" id="busqueda"
-                            value="<?php echo $busqueda ?>" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </li>
 
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
     <div class="wrap">
 
         <ul class="tabs">
@@ -121,20 +98,11 @@ $resultado = mysqli_query($mysqli, $sql);*/
         </ul>
 
         <div class="secciones">
-
-
-            </d>
-
-
             <center>
-
                 <article id="tab2">
-
                     <h1>PRODUCTOS</h1>
-
                     <fieldset>
                         <table border="0" cellpadding="0" cellspacing="0" class="table table-success table-striped">
-
                             <thead>
                                 <tr class="text-center">
                                     <th width="8%">ID PRODUCTO</th>
@@ -146,7 +114,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
                                 </tr>
                             </thead>
-                            <tbody><?php while ($row = $resProd->fetch_assoc()) { ?>
+                            <tbody><?php while ($row = $resProd->fetch_assoc()) {?>
                                 <tr class="text-center">
                                     <td width="140" align="center">
                                         <?php echo $row['id_producto']; ?></td>
@@ -165,7 +133,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                     </td>
 
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                         <a class="btn btn-danger">Reporte</a>
@@ -173,8 +141,6 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
                 </article>
             </center>
-
-
             <center>
                 <article id="tab3">
 
@@ -198,7 +164,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while ($row = $resProv->fetch_assoc()) { ?>
+                                <?php while ($row = $resProv->fetch_assoc()) {?>
                                 <tr class="text-center">
                                     <td width="140" align="center">
                                         <?php echo $row['id_proveedor']; ?></td>
@@ -218,7 +184,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                                     </td>
 
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                         <a class="btn btn-danger">Reporte</a>
@@ -226,19 +192,12 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
                 </article>
             </center>
-
-
             <center>
 
                 <article id="tab4">
-
                     <h1>TOTALES</h1>
-
                     <fieldset>
-
-
                         <table border="0" cellpadding="0" cellspacing="0" class="table table-success table-striped">
-
                             <thead>
                                 <tr class="text-center">
                                     <th width="2%">PRODUCTOS</th>
@@ -250,7 +209,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                             <tbody>
                                 <?php while ($row = $resTot->fetch_assoc()) {
 
-                                ?>
+    ?>
                                 <tr class="text-center">
 
                                     <td align="center"><?php echo $row['producto']; ?></td>
@@ -260,7 +219,8 @@ $resultado = mysqli_query($mysqli, $sql);*/
 
 
                                 </tr>
-                                <?php } ?>
+                                <?php
+}?>
                             </tbody>
                         </table>
                         <a class="btn btn-danger">Reporte</a>
@@ -270,9 +230,6 @@ $resultado = mysqli_query($mysqli, $sql);*/
             </center>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

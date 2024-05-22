@@ -1,31 +1,38 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
   background: #c0c0c0;
-  font-family: "Open sans";
+  font-family: "Open Sans", sans-serif;
 }
 
 .wrap {
-  width: 837px;
+  width: 1200px;
   max-width: 90%;
   margin: 30px auto;
 }
 
+.mensaje {
+  margin: 20px;
+}
+
+h3 {
+  text-align: center;
+}
+
 ul.tabs {
   width: 100%;
-  background: rgb(0, 100, 0);
+  background: #829b86;
   list-style: none;
   display: flex;
 }
 
 ul.tabs li {
-  width: 40%; /*tamano de la linea de arriba de entrada y salidas*/
+  width: 18%;
 }
 
 ul.tabs li a {
@@ -33,13 +40,12 @@ ul.tabs li a {
   text-decoration: none;
   font-size: 16px;
   text-align: center;
-
   display: block;
-  padding: 20px 0px;
+  padding: 20px 0;
 }
 
 .active {
-  background: #003300;
+  background: #96b7a2;
 }
 
 ul.tabs li a .tab-text {
@@ -52,7 +58,16 @@ ul.tabs li a .tab-text {
 }
 
 .secciones article {
-  padding: 50px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secciones article #tab2 form,
+.secciones article #tab3 form {
+  width: 80%;
 }
 
 .secciones article p {
@@ -69,7 +84,7 @@ ul.tabs li a .tab-text {
 
 @media screen and (max-width: 450px) {
   ul.tabs li a {
-    padding: 15px 0px;
+    padding: 15px 0;
   }
 
   ul.tabs li a .tab-text {
@@ -77,194 +92,45 @@ ul.tabs li a .tab-text {
   }
 
   .secciones article {
-    padding: 30px;
+    padding: 20px;
   }
 }
 
-.titulo {
-  position: absolute;
-
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 550px;
-  top: 100px;
-  background: #abebc6;
+/* Form Styles */
+form div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.subtitulo {
-  position: absolute;
-
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 400px;
-  top: 130px;
-  background: #f6ddcc;
+form div label {
+  width: 100px;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
-.letra {
-  position: absolute;
-
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 470px;
-  top: 130px;
+form .bot {
+  display: flex;
+  justify-content: space-around;
 }
 
-.form1 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 700;
-  top: 330;
-  background: #e5e7e9;
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
 }
 
-.form2 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 400;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form3 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 700;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form4 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 300;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form5 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form6 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form1 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form2 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form3 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form4 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form5 {
-  position: absolute;
-  width: -10;
-  height: -150px;
-  float: left;
-
-  right: 900;
-  top: 330;
-  background: #e5e7e9;
-}
-
-.form6 {
-  position: absolute;
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 340px;
-  top: 300px;
-  background: #e5e7e9;
-}
-
-.form7 {
-  position: absolute;
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 400px;
-  top: 330px;
-  background: #e5e7e9;
-}
-.form8 {
-  position: absolute;
-  width: -10%;
-  height: -150px;
-  float: left;
-
-  right: 700px;
-  top: 330px;
-  background: #e5e7e9;
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #96b7a2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(150, 183, 162, 0.5);
 }
