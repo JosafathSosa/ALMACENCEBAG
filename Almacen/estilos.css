@@ -7,96 +7,54 @@
 body {
   font-family: sans-serif;
 }
-
 .buttonContainer {
   height: 100vh;
   width: 100%;
-}
-.buttonContainer .buttons {
-  height: 100%;
-  margin: 20px;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: "20px";
-}
-.buttonContainer .buttons .buttonProductoProveedor {
-  margin: 50px;
-  background-color: #829b86;
-  border-radius: 20px;
-  grid-column: 2/5;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.buttonContainer .buttons .buttonProductoProveedor a {
-  text-decoration: none !important;
-  color: black;
-}
-.buttonContainer .buttons .buttonProductoProveedor a p {
-  margin: 30px;
-  text-align: center;
-  font-size: 20px;
-}
-.buttonContainer .buttons .buttonEntrada {
-  margin: 50px;
-  background-color: #829b86;
-  border-radius: 20px;
-  grid-column: 5/8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.buttonContainer .buttons .buttonEntrada a {
-  text-decoration: none !important;
-  color: black;
-}
-.buttonContainer .buttons .buttonEntrada a p {
-  margin: 30px;
-  text-align: center;
-  font-size: 20px;
-}
-.buttonContainer .buttons .buttonTotal {
-  margin: 50px;
-  background-color: #829b86;
-  border-radius: 20px;
-  grid-column: 2/5;
-  grid-row: 2/3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.buttonContainer .buttons .buttonTotal a {
-  text-decoration: none !important;
-  color: black;
-}
-.buttonContainer .buttons .buttonTotal a p {
-  margin: 30px;
-  text-align: center;
-  font-size: 20px;
-}
-.buttonContainer .buttons .buttonRegistros {
-  margin: 50px;
-  background-color: #829b86;
-  border-radius: 20px;
-  grid-column: 5/8;
-  grid-row: 2/3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.buttonContainer .buttons .buttonRegistros a {
-  text-decoration: none !important;
-  color: black;
-}
-.buttonContainer .buttons .buttonRegistros a p {
-  margin: 30px;
-  text-align: center;
-  font-size: 20px;
+  justify-content: center; /* Center buttons horizontally */
+  align-items: center; /* Center buttons vertically */
 }
 
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Flexible layout */
+  /* Adjust minmax values for desired button width */
+  grid-gap: 20px;
+  padding: 10px; /* Reduce padding for tighter layout */
+}
+
+.buttonProductoProveedor,
+.buttonEntrada,
+.buttonTotal,
+.buttonRegistros {
+  background-color: #829b86;
+  border-radius: 10px;
+  text-align: center; /* Center text within buttons */
+  padding: 20px; /* Adjust padding for content spacing */
+  transition: all 0.3s ease-in-out; /* Add hover effect transition */
+}
+
+.buttonProductoProveedor:hover,
+.buttonEntrada:hover,
+.buttonTotal:hover,
+.buttonRegistros:hover {
+  background-color: #698070; /* Change background on hover */
+}
+
+.icon {
+  font-size: 3rem; /* Adjust icon size */
+  margin-bottom: 10px; /* Add spacing between icon and text */
+}
+
+.text-entrada {
+  font-size: 18px; /* Adjust text size */
+}
+
+.buttons a {
+  text-decoration: none;
+  color: black;
+}
 /*# sourceMappingURL=estilos.css.map */
