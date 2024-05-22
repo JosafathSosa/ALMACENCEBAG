@@ -28,7 +28,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <title>ENTRADAS/SALIDAS</title>
+    <title>Productos, proveedores y totales</title>
     <link rel="stylesheet" href="estilos1.css">
     <link rel="stylesheet" href="font-awesome.css">
     <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>

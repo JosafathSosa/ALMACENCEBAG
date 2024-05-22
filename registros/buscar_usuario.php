@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-include("conexion.php");
+include "conexion.php";
 
 ?>
 
@@ -13,11 +13,13 @@ include("conexion.php");
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>REGISTROS</title>
     <link rel="stylesheet" href="estilos3.css">
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
-    <link rel="stylesheet" href="font-awesome.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5654adcfa3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
     function confirmacion() {
         var res = confirm("¿Esta seguro de eliminar estos datos?");
@@ -34,66 +36,40 @@ include("conexion.php");
 
 <body>
 
-    <div class="menu-cebag">
-        <?php
-        $busqueda = strtolower($_REQUEST['busqueda']);
-        if (empty($busqueda)) {
-            header("location: Registros.php");
-        }
 
-        $consutlaEntrada = "SELECT `entrada`.`id_entrada`,`entrada`.`producto`, `entrada`.`recibe`,`entrada`.`cantidad`,`entrada`.`entrega`,`entrada`.`fecha`, `proveedor`.`nombre` FROM `entrada` LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor` WHERE `entrada`.`producto` LIKE '%$busqueda%'";
-        $resultado = mysqli_query($mysqli, $consutlaEntrada);
+    <?php
+$busqueda = strtolower($_REQUEST['busqueda']);
+if (empty($busqueda)) {
+    header("location: Registros.php");
+}
 
-        $consultaSalida = "SELECT `salida`.`id_salida`,`salida`.`fecha`, `salida`.`entrega`,`salida`.`recibe`,`destino`.`direccion`,`destino`.`telefono`,`salida`.`producto`, `salida`.`cantidad` FROM `salida` LEFT JOIN `destino` ON `salida`.`id_destino` = `destino`.`id_Destino` WHERE `salida`.`producto` LIKE '%$busqueda%'";
-        $res = $mysqli->query($consultaSalida);
+$consutlaEntrada = "SELECT `entrada`.`id_entrada`,`entrada`.`producto`, `entrada`.`recibe`,`entrada`.`cantidad`,`entrada`.`entrega`,`entrada`.`fecha`, `proveedor`.`nombre` FROM `entrada` LEFT JOIN `proveedor` ON `entrada`.`id_proveedor` = `proveedor`.`id_proveedor` WHERE `entrada`.`producto` LIKE '%$busqueda%'";
+$resultado = mysqli_query($mysqli, $consutlaEntrada);
 
-        ?>
-        <ul>
+$consultaSalida = "SELECT `salida`.`id_salida`,`salida`.`fecha`, `salida`.`entrega`,`salida`.`recibe`,`destino`.`direccion`,`destino`.`telefono`,`salida`.`producto`, `salida`.`cantidad` FROM `salida` LEFT JOIN `destino` ON `salida`.`id_destino` = `destino`.`id_Destino` WHERE `salida`.`producto` LIKE '%$busqueda%'";
+$res = $mysqli->query($consultaSalida);
 
-            <li><a href="../Almacen/Almacen.php"><i class="fa fa-home"></i>INICIO</a></li>
+?>
 
-            <li><a href="../agregar/Agregar.php"><i class="fa fa-plus-square"></i>AGREGAR</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-cart-plus"></i>PRODUCTO</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-male"></i>PROVEEDOR</a></li>
-                        <li><a href="../agregar/Agregar.php"><i class="fa fa-truck"></i>OPERADOR</a></li>
-
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../Almacen/Almacen.php">Rose Natural</a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="../agregar/Agregar.php">Agregar</a>
+                    <a class="nav-link" href="../ENT - SAL/entrada-salida.php">Registrar</a>
+                    <a class="nav-link" href="../PROV-PROD-TOT/ppt.php">Totales</a>
+                    <a class="nav-link" href="../registros/Registros.php">Registros</a>
                 </div>
-            </li>
-            <li><a href="#"><i class="fa fa-cog"></i>AJUSTES</a>
-                <div class="sub-menu-1">
-                    <ul>
+                <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2" type="text" name="busqueda" value="<?php echo $busqueda ?>"
+                        id="busqueda" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-                        <li><a href="#"><i class="fa fa-user-plus"> </i>USUARIOS</a></li>
-                        <li><a href="#"><i class="fa fa-wrench"></i>GENERAL</a></li>
-                        <li><a href="#"><i class="fa fa-laptop"></i>IMPRESORA</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="">
-                    <form action="buscar_usuario.php" method="GET" class="d-flex" role="search">
-                        <input class="form-control me-2" type="text" name="busqueda" value="<?php echo $busqueda ?>"
-                            id="busqueda" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </li>
-
-            <li><a href="#"><i class="fa fa-bars"></i>PERFIL</a>
-                <div class="sub-menu-1">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-sign-out"> </i>SALIR</a></li>
-                    </ul>
-                </div>
-            </li>
-
-        </ul>
-    </div>
     <div class="wrap">
         <ul class="tabs">
 
@@ -101,8 +77,6 @@ include("conexion.php");
             </li>
             <li><a href="#tab3"><span class="fa fa-minus-square"></span><span class="tab-text">R. SALIDAS</span></a>
             </li>
-            <!--<li><a href="#tab4"><span class="fa fa-briefcase"></span><span class="tab-text">PRODUCTOR</span></a></li>
-			<li><a href="#tab5"><span class="fa fa-pagelines"></span><span class="tab-text">RANCHO</span></a></li>-->
         </ul>
 
 
@@ -112,8 +86,8 @@ include("conexion.php");
             <center>
                 <article id="tab2">
                     <div class="d-flex justify-content-between mb-3">
-                        <h1 class="flex-grow-1">REGISTRO DE ENTRADAS</h1>
-                        <a class="btn btn-danger align-self-center" href="">Reporte</a>
+                        <h1 class="flex-grow-1">Registro de entradas</h1>
+
                     </div>
                     <p>
                     <p>
@@ -129,7 +103,7 @@ include("conexion.php");
                         </tr>
                         <tbody>
                             <?php
-                            while ($row = mysqli_fetch_array($resultado)) {; ?>
+while ($row = mysqli_fetch_array($resultado)) {;?>
                             <tr class="text-center">
                                 <td><?php echo $row['id_entrada']; ?></td>
                                 <td><?php echo $row['nombre']; ?></td>
@@ -140,7 +114,7 @@ include("conexion.php");
                                 <td><?php echo $row['fecha']; ?></td>
                             </tr>
                         </tbody>
-                        <?php } ?>
+                        <?php }?>
                     </table>
                 </article>
             </center>
@@ -148,8 +122,8 @@ include("conexion.php");
             <center>
                 <article id="tab3">
                     <div class="d-flex justify-content-between mb-3">
-                        <h1 class="flex-grow-1">REGISTRO DE SALIDAS</h1>
-                        <a class="btn btn-danger align-self-center" href="">Reporte</a>
+                        <h1 class="flex-grow-1">Registro de salidas</h1>
+
                     </div>
                     <p>
                     <p>
@@ -167,7 +141,7 @@ include("conexion.php");
                             </tr>
                             <tbody>
                                 <?php
-                                while ($fila = mysqli_fetch_array($res)) {; ?>
+while ($fila = mysqli_fetch_array($res)) {;?>
                                 <tr class="text-center">
                                     <td><?php echo $fila['id_salida']; ?></td>
                                     <td><?php echo $fila['fecha']; ?></td>
@@ -178,7 +152,7 @@ include("conexion.php");
                                     <td><?php echo $fila['producto']; ?></td>
                                     <td><?php echo $fila['cantidad']; ?></td>
                                 </tr>
-                                <?php } ?>
+                                <?php }?>
                             </tbody>
                         </table>
                     </fieldset>
