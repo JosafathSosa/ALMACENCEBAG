@@ -2,6 +2,12 @@
 
 <?php
 require "conexion.php";
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../Auth/login.php");
+    exit();
+}
 $query = "SELECT * FROM proveedor";
 $resultado = $mysqli->query($query);
 

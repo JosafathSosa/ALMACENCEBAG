@@ -2,6 +2,12 @@
 
 <?php
 include "conexion.php";
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../Auth/login.php");
+    exit();
+}
 $query = "SELECT `producto`.`id_producto`,`producto`.`nombre_producto`, `producto`.`descripcion`,`proveedor`.`nombre`,`producto`.`existencias`,`producto`.`fecha` FROM `producto` LEFT JOIN `proveedor` ON `producto`.`id_proveedor` = `proveedor`.`id_proveedor` order by `proveedor`.`nombre`, `producto`.`nombre_producto`";
 $resultado = $mysqli->query($query);
 
@@ -89,7 +95,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                 <article id="tab2">
 
                     <div class="d-flex justify-content-between mb-3 align-items-center">
-                        <h1 class="flex-grow-1">PRODUCTOS</h1>
+                        <h1 class="flex-grow-1">Productos</h1>
                         <form action="filtrarProveedor.php" method="POST">
                             <div class="me-2">
                                 <label for="existencia">Por proveedor:</label>
@@ -153,7 +159,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                 <article id="tab3">
 
                     <div class="d-flex justify-content-between mb-3">
-                        <h1 class="flex-grow-1">PROVEEDORES</h1>
+                        <h1 class="flex-grow-1">Provedores</h1>
                         <a class="btn btn-danger align-self-center" href="reporteProveedores.php">Reporte</a>
                     </div>
 
@@ -208,7 +214,7 @@ $resultado = mysqli_query($mysqli, $sql);*/
                 <article id="tab4">
 
                     <div class="d-flex justify-content-between mb-3">
-                        <h1 class="flex-grow-1">TOTALES</h1>
+                        <h1 class="flex-grow-1">Totales</h1>
                         <a class="btn btn-danger align-self-center" href="reporteTotales.php">Reporte</a>
                     </div>
 

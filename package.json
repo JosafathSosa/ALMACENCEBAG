@@ -1,5 +1,5 @@
 {
-  "name": "http://localhost/ALMACENCEBAG/",
+  "name": "http://localhost:3008",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
