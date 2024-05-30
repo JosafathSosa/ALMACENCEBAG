@@ -1,5 +1,6 @@
 div.container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,4 +8,26 @@ div.container {
 
 div.row {
   width: 100%;
+}
+
+div.container.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.container img {
+  margin-bottom: 50px;
+  width: 200px;
+  height: 40px;
+}
+
+div.container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.div.container form .btn {
+  width: 50%;
 }

@@ -19,13 +19,13 @@ body {
 }
 
 .welcome h3 {
-  color: grey;
+  color: #52a380;
   font-weight: 400;
 }
 
 .welcome h3 span {
-  color: grey;
-  font-weight: 600;
+  color: #54bb85;
+  font-weight: bold;
 }
 
 .buttons {
@@ -43,7 +43,8 @@ body {
 .buttonEntrada,
 .buttonTotal,
 .buttonRegistros {
-  background-color: #829b86;
+  background-color: #55927a;
+
   border-radius: 10px;
   text-align: center; /* Center text within buttons */
   padding: 20px; /* Adjust padding for content spacing */
@@ -54,7 +55,7 @@ body {
 .buttonEntrada:hover,
 .buttonTotal:hover,
 .buttonRegistros:hover {
-  background-color: #698070; /* Change background on hover */
+  background-color: #539c7d; /* Change background on hover */
 }
 
 .icon {

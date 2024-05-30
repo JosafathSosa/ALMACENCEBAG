@@ -47,26 +47,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </div>
     </nav>
-    <div class="container ">
+    <div class="container">
+        <div class="logo">
+            <div class="logoContainer">
+                <img src="./logos/RoseNatural.png" />
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <h2 class="text-center">Login</h2>
+                <h2 class="text-center">Inicia sesión</h2>
                 <form action="login.php" method="post" class="needs-validation" novalidate>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
+                        <label for="username" class="form-label">Usuario</label>
                         <input type="text" class="form-control" id="username" name="username" required>
                         <div class="invalid-feedback">
-                            Please enter your username.
+                            Por favor ingresa el nombre de usuario.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">Contraeña</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                         <div class="invalid-feedback">
-                            Please enter your password.
+                            Por favor ingresa la contraseña.
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-success">Inicia sesión</button>
                 </form>
             </div>
         </div>
